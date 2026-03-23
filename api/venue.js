@@ -23,7 +23,7 @@ export default async function handler(req, res) {
 
   const result = data.result;
 
-  const photoUrls = (result.photos ?? []).slice(0, 5).map((p) => {
+  const photoUrls = (result.photos ?? []).slice(0, 10).map((p) => {
     const photoParams = new URLSearchParams({
       maxwidth: '800',
       photoreference: p.photo_reference,
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
     return `${BASE_URL}/photo?${photoParams}`;
   });
 
-  const reviews = (result.reviews ?? []).slice(0, 5).map((r) => ({
+  const reviews = (result.reviews ?? []).slice(0, 10).map((r) => ({
     text: r.text,
     rating: r.rating,
     author: r.author_name,
