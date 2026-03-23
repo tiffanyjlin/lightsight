@@ -9,8 +9,10 @@ export default async function handler(req, res) {
   }
 
   const params = new URLSearchParams({
-    query: `${query} restaurant OR bar`,
-    type: 'restaurant|bar',
+    query,
+    type: 'establishment',
+    location: '40.7128,-74.0060',
+    radius: '40000',
     key: API_KEY,
   });
 
@@ -21,7 +23,7 @@ export default async function handler(req, res) {
     return res.status(502).json({ error: data.error_message ?? `Places API error: ${data.status}` });
   }
 
-  const results = (data.results ?? []).slice(0, 5).map((place) => ({
+  const results = (data.results ?? []).slice(0, 20).map((place) => ({
     placeId: place.place_id,
     name: place.name,
     address: place.formatted_address ?? '',
