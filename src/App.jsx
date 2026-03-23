@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import SearchBar from './components/SearchBar';
 import VenueCard from './components/VenueCard';
-import { searchVenues, getVenueDetails, getPhotoUrl } from './utils/placesApi';
+import { searchVenues, getVenueDetails } from './utils/placesApi';
 import { analyzePhotoBrightness } from './utils/visionApi';
 import { calculateLightingScore } from './utils/scoringLogic';
 import './App.css';
@@ -49,8 +49,8 @@ export default function App() {
     try {
       const details = await getVenueDetails(venue.placeId);
 
-      const brightnessPromises = details.photos.map((ref) =>
-        analyzePhotoBrightness(getPhotoUrl(ref))
+      const brightnessPromises = details.photoUrls.map((url) =>
+        analyzePhotoBrightness(url)
       );
       const brightnessValues = await Promise.all(brightnessPromises);
 
