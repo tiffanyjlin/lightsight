@@ -1,0 +1,371 @@
+/* ── App Shell ── */
+.app {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* ── Header ── */
+.app-header {
+  text-align: center;
+  padding: 1.75rem 1rem 1.1rem;
+  background: linear-gradient(180deg, #161616 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.logo-icon {
+  color: var(--gold);
+  filter: drop-shadow(0 0 6px rgba(245, 197, 24, 0.35));
+  flex-shrink: 0;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ── Main ── */
+.app-main {
+  flex: 1;
+  padding: 0.85rem;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ── Search Bar ── */
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.search-input-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.7rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-input-wrapper input {
+  width: 100%;
+  padding: 0.7rem 0.7rem 0.7rem 2.35rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input-wrapper input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input-wrapper input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px var(--gold-dim);
+}
+
+.search-bar button {
+  padding: 0.7rem 1.1rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--gold);
+  color: #0f0f0f;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.search-bar button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.search-bar button:not(:disabled):active {
+  opacity: 0.85;
+  transform: scale(0.97);
+}
+
+/* ── Venue List ── */
+.venue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ── Venue Card ── */
+.venue-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.venue-card.has-score {
+  border-color: rgba(245, 197, 24, 0.2);
+}
+
+.venue-card-body {
+  padding: 0.9rem 1rem;
+}
+
+.venue-info {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.venue-name {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.venue-address {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.analysis-error {
+  margin: 0.6rem 0 0;
+  font-size: 0.78rem;
+  color: var(--danger);
+}
+
+/* ── Check Lighting Button ── */
+.check-lighting-btn {
+  margin-top: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  background: var(--gold-dim);
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+.check-lighting-btn:not(:disabled):active {
+  background: var(--gold);
+  color: #0f0f0f;
+  transform: scale(0.97);
+}
+
+.check-lighting-btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.btn-icon {
+  flex-shrink: 0;
+}
+
+.btn-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--gold-dim);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* ── Lighting Score (prominent) ── */
+.lighting-score {
+  margin-top: 0.65rem;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, rgba(245, 197, 24, 0.08) 0%, rgba(245, 197, 24, 0.03) 100%);
+  border: 1px solid rgba(245, 197, 24, 0.18);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.score-bulbs {
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.bulb-icon {
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 3px rgba(245, 197, 24, 0.25));
+}
+
+.score-details {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.score-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: -0.03em;
+}
+
+.score-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.score-summary {
+  margin: 0.25rem 0 0;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+
+/* ── Loading States ── */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 3.5rem 1rem 2rem;
+  color: var(--text-secondary);
+}
+
+.loading-state p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+.loading-pulse {
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 1; }
+}
+
+/* ── Empty State ── */
+.empty-state {
+  text-align: center;
+  padding: 3.5rem 1.5rem 2rem;
+  color: var(--text-muted);
+}
+
+.empty-icon {
+  margin-bottom: 0.5rem;
+  color: var(--gold-muted);
+  opacity: 0.4;
+}
+
+.empty-state h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ── Error ── */
+.error-message {
+  background: rgba(240, 128, 128, 0.08);
+  border: 1px solid rgba(240, 128, 128, 0.2);
+  color: var(--danger);
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  margin-bottom: 0.85rem;
+}
+
+/* ── Skeleton loading cards ── */
+.venue-card-skeleton {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 0.9rem 1rem;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: var(--border);
+}
+
+.skeleton-line.title {
+  width: 65%;
+  height: 14px;
+  margin-bottom: 0.45rem;
+}
+
+.skeleton-line.address {
+  width: 85%;
+  margin-bottom: 0.65rem;
+}
+
+.skeleton-line.button {
+  width: 100%;
+  height: 36px;
+  border-radius: 10px;
+}
