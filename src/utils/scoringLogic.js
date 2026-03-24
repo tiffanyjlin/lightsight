@@ -27,11 +27,11 @@ export function calculateLightingScore(brightnessValues, reviews) {
   const reviewScore = reviewCount > 0 ? reviewSentimentToScale(reviews) : 3;
 
   const raw = photoScore * 0.7 + reviewScore * 0.3;
-  const score = clamp(Math.round(raw), 1, 5);
+  const score = clamp(parseFloat(raw.toFixed(1)), 1, 5);
 
   return {
     score,
-    label: LABELS[score],
+    label: LABELS[Math.round(score)],
     photoCount,
     reviewCount,
   };

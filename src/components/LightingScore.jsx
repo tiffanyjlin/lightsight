@@ -26,11 +26,11 @@ export default function LightingScore({ result }) {
     <div className="lighting-score">
       <div className="score-bulbs" role="img" aria-label={`${score} out of 5`}>
         {[1, 2, 3, 4, 5].map((n) => (
-          <Bulb key={n} filled={n <= score} />
+          <Bulb key={n} filled={n <= Math.round(score)} />
         ))}
       </div>
       <div className="score-details">
-        <span className="score-value">{score}/5</span>
+        <span className="score-value">{score.toFixed(1)}/5</span>
         <span className="score-label">{label}</span>
       </div>
       {summary && <p className="score-summary">{summary}</p>}
